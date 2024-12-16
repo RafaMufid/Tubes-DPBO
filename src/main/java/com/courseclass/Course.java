@@ -11,5 +11,12 @@ package com.courseclass;
 public class Course {
     private String mapel;
     private String courseID;
-    
+
+    public Course(String mapel, String courseID) {
+        this.mapel = mapel;
+        this.courseID = courseID;
+    }
+    public void learn(){
+        System.out.println("saya belajar");
+    }
 }
