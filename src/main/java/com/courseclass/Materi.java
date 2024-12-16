@@ -4,32 +4,26 @@
  */
 package com.courseclass;
 
+import com.userclass.Student;
+import com.userclass.Teacher;
+import java.util.*;
 /**
  *
  * @author ASUS
  */
 public class Materi extends Course{
-    private String isi;
-
-    public Materi(String isi, String courseID) {
-        super(courseID);
-        this.isi = isi;
-    }
-
-    public void learn(){
-        System.out.println("Membuka materi");
+    private ArrayList<String> listMateri = new ArrayList<>();
+    
+    public Materi(String name, String description, Teacher homeroom){
+        super(name, description, homeroom);
     }
     
-    public void document(){
-        System.out.println("Mengakses materi: \n"+isi);
+    public void addMateri(String materi){
+        listMateri.add(materi);
+        System.out.println("Materi '"+materi+"' ditambahkan ke dalam kelas "+super.getName());
     }
     
-    public void video(){
-        System.out.println("Membuka video...");
-        System.out.println(".");
-        System.out.println(".");
-        System.out.println(".");
-        System.out.println("Video selesai");
+    public void viewMaterials() {
+        System.out.println("Materi yang ada di class " + super.getName() + ": " + listMateri);
     }
-    
 }

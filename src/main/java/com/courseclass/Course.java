@@ -4,6 +4,8 @@
  */
 package com.courseclass;
 
+import com.userclass.Student;
+import com.userclass.Teacher;
 import java.util.*;
 
 /**
@@ -11,16 +13,23 @@ import java.util.*;
  * @author ASUS
  */
 public class Course {
-    private String[] mapel = new String[3];
-    private String courseID;
+    private String name;
+    private String description;
+    protected Teacher homeroom;
+    protected ArrayList<Student> students = new ArrayList<>();
     
-    public Course(String[] mapel, String courseID) {
-        this.mapel[0] = "Matematika";
-        this.mapel[1] = "Fisia";
-        this.mapel[2] = "Kimia";
-        this.courseID = courseID;
+    public Course(String name, String description, Teacher homeroom){
+        this.name = name;
+        this.description = description;
+        this.homeroom = homeroom;
     }
-    public void learn(){
-        System.out.println("Mulai belajar");
+    
+    public String getName(){
+        return name;
+    }
+    
+    public void addStudent(Student student){
+        students.add(student);
+        System.out.println(student+" ditambahkan ke dalam kelas "+name);
     }
 }

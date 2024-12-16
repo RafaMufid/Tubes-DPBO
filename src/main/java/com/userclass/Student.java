@@ -4,15 +4,40 @@
  */
 package com.userclass;
 
+import com.courseclass.Course;
+import java.util.*;
+
 /**
  *
  * @author ASUS
  */
 public class Student extends User{
-    private String studentID;
-
-    public Student(String studentID, String nama) {
-        super(nama);
-        this.studentID = studentID;
+    private ArrayList<Course> enrolledClasses = new ArrayList<>();
+    
+    public Student(int id, String name, String password){
+        super(id, name, password);
     }
+
+    @Override
+    public void login() {
+        System.out.println("Student "+name+" has logged in.");
+    }
+
+    @Override
+    public void logout() {
+        System.out.println("Student "+name+" has logged out.");
+    }
+
+    @Override
+    public void viewForum() {
+        System.out.println("View forum as a student");
+    }
+    
+    public void enrollClass(Course course){
+        enrolledClasses.add(course);
+        course.addStudent(this);
+        System.out.println(name+" has enrolled in class: "+course.getName());
+    }
+    
+    
 }

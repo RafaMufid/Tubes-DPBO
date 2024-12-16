@@ -4,10 +4,15 @@
  */
 package com.userclass;
 
+import java.util.*;
 /**
  *
  * @author ASUS
  */
 public interface IManage {
-    ...
+    public void createClass(String name, String description);
+    public void addMateri(String materi);
+    public void addQuiz(String quizName, HashMap<String, String> questions);
+    public void addAssessment(String assessmentName, HashMap <String, String> questions);
+    public void postToForum(String post);
 }
