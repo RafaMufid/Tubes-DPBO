@@ -8,18 +8,22 @@ package com.userclass;
  *
  * @author ASUS
  */
-public class User {
-    private String nama;
+public abstract class User {
+    protected int id;
+    protected String name;
+    protected String password;
 
-    public User(String nama) {
-        this.nama = nama;
+    public User(int id, String name, String password){
+        this.id = id;
+        this.name = name;
+        this.password = password;
     }
     
-    public void login(){
-        System.out.println("Login...");
+    public String getName(){
+        return name;
     }
     
-    public void logout(){
-        System.out.println("Logout...");
-    }
+    public abstract void login();
+    public abstract void logout();
+    public abstract void viewForum();
 }

@@ -4,26 +4,26 @@
  */
 package com.courseclass;
 
+import com.userclass.Teacher;
+import java.util.*;
+
 /**
  *
  * @author Arrayan
  */
 public class Forum extends Course {
-    private String isi;
+    private ArrayList<String> posts = new ArrayList<>();
 
-    public Forum(String isi, String mapel, String courseID) {
-        super(mapel, courseID);
-        this.isi = isi;
+    public Forum(String name, String description, Teacher teacher) {
+        super(name, description, teacher);
     }
 
-    @Override
-    public void learn() {
-        super.learn();
+    public void postToForum(String post) {
+        posts.add(post);
+        System.out.println("Forum berhasil di post class " + super.getName() + ": " + post);
     }
-    public void mengirimPesan(){
-        System.out.println("Sedang mengirim pesan");
-    }
-    public void menerimaPesan(){
-        System.out.println("Pesan diterima");
+
+    public void viewPosts() {
+        System.out.println("Forum pada class " + super.getName() + ": " + posts);
     }
 }
