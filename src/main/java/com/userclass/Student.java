@@ -13,10 +13,35 @@ import java.util.*;
  */
 public class Student extends User{
     private ArrayList<Course> enrolledClasses = new ArrayList<>();
+    private HashMap<String, Student> map = new HashMap<String,Student>();
     
-    public Student(int id, String name, String password){
-        super(id, name, password);
+    public Student(String name, String password){
+        super(name, password);
     }
+
+    public void init_Student() {
+        map.put("1030232131231", new Student("wahyu","123"));
+    }
+    
+    public boolean getEmail(String text) {
+        for (Student s : map.values()) {
+            if(s.getName().equals(text)){
+                return true;
+            }
+        }
+        return false; 
+    }
+    
+    public boolean getPass(String text) {
+        for (Student s : map.values()) {
+            if(s.getPassword().equals(text)){
+                return true;
+            }
+        }
+        return false; 
+    }
+    
+    
 
     @Override
     public void login() {

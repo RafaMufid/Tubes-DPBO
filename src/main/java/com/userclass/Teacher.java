@@ -16,8 +16,8 @@ import java.util.*;
 public class Teacher extends User implements IManage{
     private ArrayList<Course> classes = new ArrayList<>();
 
-    public Teacher(int id, String name, String email) {
-        super(id, name, email);
+    public Teacher(String name, String email) {
+        super(name, email);
     }
 
     @Override
