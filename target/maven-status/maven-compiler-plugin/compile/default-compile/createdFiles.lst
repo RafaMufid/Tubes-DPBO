@@ -1,8 +1,10 @@
 com\GUIPackage\Login$6.class
+com\GUIPackage\HomePage$1.class
 com\courseclass\Forum.class
 com\userclass\Teacher.class
 com\GUIPackage\Login$1.class
 com\GUIPackage\SignUp$2.class
+com\GUIPackage\HomePage.class
 com\GUIPackage\Login$5.class
 com\userclass\Student.class
 com\courseclass\Course.class

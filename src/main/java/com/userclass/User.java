@@ -13,15 +13,21 @@ public abstract class User {
     protected String name;
     protected String password;
 
-    public User(int id, String name, String password){
-        this.id = id;
+    public User(String name, String password){
+        this.id = id+1;
         this.name = name;
         this.password = password;
     }
     
+    
     public String getName(){
         return name;
     }
+
+    public String getPassword() {
+        return password;
+    }
+    
     
     public abstract void login();
     public abstract void logout();

@@ -4,14 +4,21 @@
  */
 package com.GUIPackage;
 
+import com.userclass.Student;
+import com.userclass.User;
+
 /**
  *
  * @author ASUS
  */
 public class Login extends javax.swing.JFrame {
+    Student std = new Student("w","123");
+    
+    
 
     public Login() {
         initComponents();
+        std.init_Student();
     }
 
     @SuppressWarnings("unchecked")
@@ -24,9 +31,9 @@ public class Login extends javax.swing.JFrame {
         Right = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        pass = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -73,11 +80,12 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setText("Email");
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        name.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        name.setForeground(new java.awt.Color(102, 102, 102));
+        name.setToolTipText("");
+        name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nameActionPerformed(evt);
             }
         });
 
@@ -85,10 +93,10 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel3.setText("Password");
 
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        pass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                passActionPerformed(evt);
             }
         });
 
@@ -160,8 +168,8 @@ public class Login extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1)
-                    .addComponent(jPasswordField1))
+                    .addComponent(name)
+                    .addComponent(pass))
                 .addGap(38, 160, Short.MAX_VALUE))
         );
         RightLayout.setVerticalGroup(
@@ -172,11 +180,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel2)
                 .addGap(8, 8, 8)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jLabel3)
                 .addGap(8, 8, 8)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(RightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -211,16 +219,27 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+        
+    }//GEN-LAST:event_nameActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_passActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        
+        if(std.getEmail(name.getText()) && std.getPass(String.valueOf(pass.getPassword()))) {
+            HomePage hm = new HomePage();
+            hm.setVisible(true);
+            hm.pack();
+            hm.setLocationRelativeTo(null);
+            this.dispose();
+        }
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -231,13 +250,13 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,9 +275,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField name;
+    private javax.swing.JPasswordField pass;
     // End of variables declaration//GEN-END:variables
 }
