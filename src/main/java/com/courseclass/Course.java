@@ -15,7 +15,7 @@ import java.util.*;
 public class Course{
     private String name;
     private String description;
-    protected Teacher homeroom;
+    protected static Teacher homeroom;
     protected ArrayList<Student> students = new ArrayList<>();
     private static HashMap<String,Course> course = new HashMap<String,Course>();
     private static ArrayList<Course> arrCourse = new ArrayList<>();
@@ -58,22 +58,13 @@ public class Course{
         return this.name;
     }
     
-//    public static String getName1(){
-//      StringBuilder courseNames = new StringBuilder();
-//
-//    // Iterate through each course and append its name
-//    for (int i = 0; i < arrCourse.size(); i++) {
-//        courseNames.append(arrCourse.get(i).name);
-//
-//        // Add a line break between course names
-//        if (i < arrCourse.size() - 1) {
-//            courseNames.append("\n");  // Add a new line after each course name
-//        }
-//    }
-//
-//    // Return all course names as a single string
-//    return courseNames.toString();
-//    }
+    public static boolean addMatkul(String kode, String name, String description){
+        Course newMapel = new Course(name,description,homeroom);
+        course.put(kode,newMapel);
+        arrCourse.add(newMapel);
+        return true;
+        
+    }
     
     public void addStudent(Student student){
         students.add(student);
