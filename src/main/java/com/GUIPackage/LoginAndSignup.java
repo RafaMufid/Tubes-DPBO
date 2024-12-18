@@ -4,16 +4,20 @@
 
 package com.GUIPackage;
 
+import com.courseclass.Course;
 import com.userclass.Student;
-import java.util.HashMap;
+import com.userclass.Teacher;
+import java.util.*;
+
 
 /**
  *
  * @author ASUS
  */
-public class Main {
+public class LoginAndSignup {
 
     public static void main(String[] args) {
+        Course.init_Course();
         Student.init_Student();
         Login LoginFrame = new Login();
         LoginFrame.setVisible(true);
