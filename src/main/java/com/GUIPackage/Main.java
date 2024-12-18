@@ -4,13 +4,17 @@
 
 package com.GUIPackage;
 
+import com.userclass.Student;
+import java.util.HashMap;
+
 /**
  *
  * @author ASUS
  */
-public class LoginAndSignup {
+public class Main {
 
     public static void main(String[] args) {
+        Student.init_Student();
         Login LoginFrame = new Login();
         LoginFrame.setVisible(true);
         LoginFrame.pack();

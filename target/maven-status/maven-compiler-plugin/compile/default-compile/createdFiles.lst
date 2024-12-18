@@ -11,7 +11,8 @@ com\courseclass\Course.class
 com\courseclass\Quiz.class
 com\userclass\User.class
 com\courseclass\Assessment.class
-com\GUIPackage\LoginAndSignup.class
+com\userclass\IUser.class
+com\GUIPackage\Main.class
 com\GUIPackage\Login$4.class
 com\GUIPackage\Login$3.class
 com\GUIPackage\Login.class

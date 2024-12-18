@@ -11,58 +11,76 @@ import java.util.*;
  *
  * @author ASUS
  */
-public class Student extends User{
+public class Student implements IUser{
+    private String name;
+    private String password;
     private ArrayList<Course> enrolledClasses = new ArrayList<>();
-    private HashMap<String, Student> map = new HashMap<String,Student>();
-    
-    public Student(String name, String password){
-        super(name, password);
+    private static HashMap<String, Student> map = new HashMap<>(); // Shared student registry
+
+    // Constructor
+    public Student(String name, String password) {
+        this.name = name;
+        this.password = password;
     }
 
-    public void init_Student() {
-        map.put("1030232131231", new Student("wahyu","123"));
+    // Method to initialize sample data
+    public static void init_Student() {
+        map.put("adrianp@gmail.com", new Student("Adrian", "123"));
     }
-    
-    public boolean getEmail(String text) {
-        for (Student s : map.values()) {
-            if(s.getName().equals(text)){
-                return true;
-            }
+
+    // Check if email exists in the map
+    public static boolean emailExists(String email) {
+        return map.containsKey(email);
+    }
+
+    // Validate password for a given email
+    public static boolean validatePassword(String email, String password) {
+        if (map.containsKey(email)) {
+            return map.get(email).password.equals(password);
         }
-        return false; 
+        return false;
     }
-    
-    public boolean getPass(String text) {
-        for (Student s : map.values()) {
-            if(s.getPassword().equals(text)){
-                return true;
-            }
+
+    // Register a new student
+    public static boolean register(String email, String name, String password) {
+        if (map.containsKey(email)) {
+            System.out.println("Registration Error: Email already exists.");
+            return false;
         }
-        return false; 
-    }
-    
-    
 
-    @Override
-    public void login() {
-        System.out.println("Student "+name+" has logged in.");
+        Student newStudent = new Student(name, password);
+        map.put(email, newStudent);
+        System.out.println("Registration successful for " + name);
+        return true;
     }
 
-    @Override
-    public void logout() {
-        System.out.println("Student "+name+" has logged out.");
-    }
-
-    @Override
-    public void viewForum() {
-        System.out.println("View forum as a student");
-    }
-    
-    public void enrollClass(Course course){
+    // Enroll in a class
+    public void enrollClass(Course course) {
         enrolledClasses.add(course);
         course.addStudent(this);
-        System.out.println(name+" has enrolled in class: "+course.getName());
+        System.out.println(name + " has enrolled in class: " + course.getName());
+    }
+
+    // IUser interface methods
+    public void login() {
+        System.out.println("Student " + name + " has logged in.");
+    }
+
+    public void logout() {
+        System.out.println("Student " + name + " has logged out.");
+    }
+
+    public void viewForum() {
+        System.out.println("View forum as a student.");
     }
     
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }    
     
 }
