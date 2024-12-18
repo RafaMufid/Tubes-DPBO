@@ -7,11 +7,9 @@ package com.GUIPackage;
 import com.courseclass.Course;
 import com.userclass.Student;
 import com.userclass.Teacher;
-import java.awt.Color;
-import java.awt.Font;
 import java.util.*;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -21,12 +19,50 @@ public class HomePage extends javax.swing.JFrame {
 
     /**
      * Creates new form HomePage
-     */
+     */ 
   public HomePage() {
         
         initComponents();
         Course.init_Course(); // Ensure courses are initialized before accessing them
         populateCourseList();  // Populate the CourseList panel with course names
+        JFrame frame = new JFrame("Wirexam");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 300);
+        frame.setLayout(new BorderLayout());
+        
+         JPanel headerPanel = new JPanel();
+        headerPanel.setBackground(new Color(0, 102, 204));
+        headerPanel.setPreferredSize(new Dimension(0, 50));
+        JLabel title = new JLabel("Wirexam");
+        title.setFont(new Font("Arial", Font.BOLD, 20));
+        title.setForeground(Color.BLACK);
+        headerPanel.add(title);
+         JPanel sidebarPanel = new JPanel();
+        sidebarPanel.setBackground(new Color(0, 51, 102));
+        sidebarPanel.setPreferredSize(new Dimension(100, 0));
+
+        // Content Panel
+        JPanel contentPanel = new JPanel(new BorderLayout());
+        JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
+        textArea.setText("Matematika\nKIMIA\nBING");
+
+        // Input Panel di sebelah kanan
+        JPanel inputPanel = new JPanel(new BorderLayout());
+        inputPanel.setBackground(Color.LIGHT_GRAY);
+        JTextField inputField = new JTextField(20);
+        inputPanel.add(inputField, BorderLayout.NORTH);
+
+        // Menambahkan ke JFrame
+        frame.add(headerPanel, BorderLayout.NORTH);
+        frame.add(sidebarPanel, BorderLayout.WEST);
+        frame.add(contentPanel, BorderLayout.CENTER);
+        frame.add(inputPanel, BorderLayout.EAST);
+        contentPanel.add(new JScrollPane(textArea), BorderLayout.CENTER);
+
+        // Menampilkan JFrame
+        frame.setVisible(true);
+    
     }
 
     // Method to dynamically populate the CourseList panel
@@ -71,6 +107,14 @@ public class HomePage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         CourseList = new javax.swing.JPanel();
+        NewMapelPanel = new javax.swing.JPanel();
+        NMapel = new javax.swing.JTextField();
+        Deskripsi = new javax.swing.JTextField();
+        AddMapel = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        KMapel = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,7 +171,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addContainerGap(550, Short.MAX_VALUE))
+                .addContainerGap(551, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +193,7 @@ public class HomePage extends javax.swing.JFrame {
         CourseList.setLayout(CourseListLayout);
         CourseListLayout.setHorizontalGroup(
             CourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 310, Short.MAX_VALUE)
         );
         CourseListLayout.setVerticalGroup(
             CourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +201,82 @@ public class HomePage extends javax.swing.JFrame {
         );
 
         jPanel2.add(CourseList);
-        CourseList.setBounds(200, 60, 600, 440);
+        CourseList.setBounds(200, 60, 310, 440);
+
+        NewMapelPanel.setBackground(new java.awt.Color(51, 51, 255));
+
+        NMapel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NMapelActionPerformed(evt);
+            }
+        });
+
+        Deskripsi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeskripsiActionPerformed(evt);
+            }
+        });
+
+        AddMapel.setText("Submit");
+        AddMapel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddMapel(evt);
+            }
+        });
+
+        jLabel2.setText("Nama Mapel");
+
+        jLabel3.setText("Deskripsi");
+
+        KMapel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KMapelActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Kode Mapel");
+
+        javax.swing.GroupLayout NewMapelPanelLayout = new javax.swing.GroupLayout(NewMapelPanel);
+        NewMapelPanel.setLayout(NewMapelPanelLayout);
+        NewMapelPanelLayout.setHorizontalGroup(
+            NewMapelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewMapelPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(NewMapelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Deskripsi, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NMapel)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(KMapel, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, NewMapelPanelLayout.createSequentialGroup()
+                        .addComponent(AddMapel, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 125, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        NewMapelPanelLayout.setVerticalGroup(
+            NewMapelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NewMapelPanelLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(KMapel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NMapel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Deskripsi, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(AddMapel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(NewMapelPanel);
+        NewMapelPanel.setBounds(510, 60, 293, 440);
+        NewMapelPanel.getAccessibleContext().setAccessibleParent(NewMapelPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,6 +296,31 @@ public class HomePage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void NMapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NMapelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NMapelActionPerformed
+
+    private void DeskripsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeskripsiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DeskripsiActionPerformed
+
+    private void KMapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KMapelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KMapelActionPerformed
+
+    private void AddMapel(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMapel
+        String kode = KMapel.getText();
+        String name = NMapel.getText();
+        String description = Deskripsi.getText();
+        
+        if(Course.addMatkul(kode, name, description)) {
+            JOptionPane.showMessageDialog(null, "Berhasil Menambah Mapel");
+            populateCourseList();
+        } else {
+            JOptionPane.showMessageDialog(null, "Gagal Menambah Mapel");
+        }
+    }//GEN-LAST:event_AddMapel
 
     /**
      * @param args the command line arguments
@@ -217,8 +361,16 @@ public class HomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddMapel;
     private javax.swing.JPanel CourseList;
+    private javax.swing.JTextField Deskripsi;
+    private javax.swing.JTextField KMapel;
+    private javax.swing.JTextField NMapel;
+    private javax.swing.JPanel NewMapelPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
