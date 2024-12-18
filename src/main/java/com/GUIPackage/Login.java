@@ -6,19 +6,18 @@ package com.GUIPackage;
 
 import com.userclass.Student;
 import com.userclass.User;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ASUS
  */
 public class Login extends javax.swing.JFrame {
-    Student std = new Student("w","123");
     
     
 
     public Login() {
         initComponents();
-        std.init_Student();
     }
 
     @SuppressWarnings("unchecked")
@@ -228,17 +227,20 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_passActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
-        if(std.getEmail(name.getText()) && std.getPass(String.valueOf(pass.getPassword()))) {
-            HomePage hm = new HomePage();
-            hm.setVisible(true);
-            hm.pack();
-            hm.setLocationRelativeTo(null);
-            this.dispose();
-        }
-        
-        
+                String email = name.getText();
+                String password = new String(pass.getPassword());
+
+                if (Student.emailExists(email) && Student.validatePassword(email, password)) {
+                    JOptionPane.showMessageDialog(null, "Login successful!");
+                    HomePage HomeFrame = new HomePage();
+                    HomeFrame.setVisible(true);
+                    HomeFrame.pack();
+                    HomeFrame.setLocationRelativeTo(null); 
+                    this.dispose();
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid email or password.");
+                }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
