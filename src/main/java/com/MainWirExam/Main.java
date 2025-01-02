@@ -17,11 +17,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Teacher a = new Teacher("budi","mamet");
-        a.createClass("MTK123", "Matematika", "Kontol Mememk Jembut", a);
-        a.showClass();
-        a.addMateri("MTK123", "1 + 1 = 2");
-        a.showMateri("MTK123");
+        Teacher.init_Teacher();
+        System.out.println(Teacher.emailExists("akurafamufid@gmail.com"));
+        Teacher.register("ahmaddillan@gmail.com", "Dillan", "123");
+        System.out.println(Teacher.validatePassword("ahmaddillan@gmail.com", "123"));
     }
     
     public void menu1(){

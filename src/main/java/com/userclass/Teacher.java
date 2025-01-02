@@ -14,14 +14,47 @@ import java.util.*;
  *
  * @author ASUS
  */
-public class Teacher extends User implements IManage{
+public class Teacher implements IUser, IManage{
+    private String name;
+    private String password;
     private Course Course;
     private Materi materi;
+    private static HashMap<String, Teacher> map = new HashMap<>();
 
     public Teacher(String name, String password) {
-        super(name, password);
-        this.Course = new Course();
-        this.materi = new Materi();
+        this.name = name;
+        this.password = password;
+    }
+    
+    // Method to initialize sample data
+    public static void init_Teacher() {
+        map.put("akurafamufid@gmail.com", new Teacher("Rafa", "123"));
+    }
+
+    // Check if email exists in the map
+    public static boolean emailExists(String email) {
+        return map.containsKey(email);
+    }
+
+    // Validate password for a given email
+    public static boolean validatePassword(String email, String password) {
+        if (map.containsKey(email)) {
+            return map.get(email).password.equals(password);
+        }
+        return false;
+    }
+
+    // Register a new student
+    public static boolean register(String email, String name, String password) {
+        if (map.containsKey(email)) {
+            System.out.println("Registration Error: Email already exists.");
+            return false;
+        }
+
+        Teacher newTeacher = new Teacher(name, password);
+        map.put(email, newTeacher);
+        System.out.println("Registration successful for " + name);
+        return true;
     }
 
     @Override
@@ -97,5 +130,13 @@ public class Teacher extends User implements IManage{
 
     public void gradeAssessment(String assessmentName, Assessment Course) {
         Course.gradeAssessment(this, assessmentName);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
