@@ -14,6 +14,10 @@ import java.util.*;
 public class Materi extends Course{
     private ArrayList<String> listMateri = new ArrayList<>();
     
+    public Materi(){
+        super(null,null,null);
+    };
+    
     public Materi(String name, String description, Teacher homeroom){
         super(name, description, homeroom);
     }
@@ -24,6 +28,13 @@ public class Materi extends Course{
     }
     
     public void viewMaterials() {
-        System.out.println("Materi yang ada di class " + super.getName() + ": " + listMateri);
+    if (listMateri.isEmpty()) {
+        System.out.println("No materials have been added to the class " + super.getName());
+    } else {
+        System.out.println("Materi yang ada di class " + super.getName() + ":");
+        for (String materi : listMateri) {
+            System.out.println("- " + materi);
+        }
+    }
     }
 }

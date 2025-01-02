@@ -1,7 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
+/*
 package com.GUIPackage;
 
 import com.courseclass.Course;
@@ -14,6 +14,7 @@ import java.util.*;
  *
  * @author ASUS
  */
+/*
 public class LoginAndSignup {
 
     public static void main(String[] args) {
@@ -25,3 +26,4 @@ public class LoginAndSignup {
         LoginFrame.setLocationRelativeTo(null); //center window
     }
 }
+*/

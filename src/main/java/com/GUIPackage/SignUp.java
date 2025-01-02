@@ -1,4 +1,4 @@
-
+/*
 package com.GUIPackage;
 
 import com.userclass.Student;
@@ -205,8 +205,7 @@ public class SignUp extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
-
+/*
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField emailField;
@@ -224,3 +223,4 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
+*/

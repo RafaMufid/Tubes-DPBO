@@ -16,14 +16,29 @@ public class Course{
     private String name;
     private String description;
     protected static Teacher homeroom;
+    private Materi materi;
     protected ArrayList<Student> students = new ArrayList<>();
     private static HashMap<String,Course> course = new HashMap<String,Course>();
     private static ArrayList<Course> arrCourse = new ArrayList<>();
+    
+    public Course(){
+        this.name = null;
+        this.description = null;
+        this.homeroom = null;
+    };
     
     public Course(String name, String description, Teacher homeroom){
         this.name = name;
         this.description = description;
         this.homeroom = homeroom;
+    }
+    
+    public void setMateri(Materi materi) {
+        this.materi = materi;
+    }
+
+    public Materi getMateri() {
+        return materi;
     }
     
     public static void init_Course(){
@@ -46,28 +61,48 @@ public class Course{
         return description;
     }
 
-    public static ArrayList<Course> getArrCourse() {
+    public ArrayList<Course> getArrCourse() {
         return arrCourse;
+    }
+    
+    public void showCourse(){
+        for (int i = 0; i < arrCourse.size(); i++) {
+            Course get = arrCourse.get(i);
+            System.out.println(get.getCourse().keySet() + " " + get.name + " " + get.description);
+        }
     }
     
     public HashMap<String, Course> getCourse() {
         return course;
     }
     
+    public Course getKey(String kode){
+        for (int i = 0; i < arrCourse.size(); i++) {
+            Course get = arrCourse.get(i);
+            if(get.getCourse().containsKey(kode)){
+                return get.getCourse().get(kode);
+            }
+        }
+        return null;
+    }
+    
     public String getName(){
         return this.name;
     }
+
+    public static Teacher getHomeroom() {
+        return homeroom;
+    }
     
-    public static boolean addMatkul(String kode, String name, String description){
-        Course newMapel = new Course(name,description,homeroom);
+    public static void addMatkul(String kode, String name, String description, Teacher guru){
+        Course newMapel = new Course(name,description,guru);
         course.put(kode,newMapel);
         arrCourse.add(newMapel);
-        return true;
-        
     }
     
     public void addStudent(Student student){
         students.add(student);
         System.out.println(student+" ditambahkan ke dalam kelas "+name);
     }
+    
 }

@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+/*
 package com.GUIPackage;
 
 import com.userclass.Student;
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author ASUS
  */
+/*
 public class Login extends javax.swing.JFrame {
     
     
@@ -264,7 +266,7 @@ public class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-
+/*
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Left;
     private javax.swing.JPanel Right;
@@ -283,3 +285,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField pass;
     // End of variables declaration//GEN-END:variables
 }
+*/

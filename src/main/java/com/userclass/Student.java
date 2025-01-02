@@ -62,14 +62,17 @@ public class Student implements IUser{
     }
 
     // IUser interface methods
+    @Override
     public void login() {
         System.out.println("Student " + name + " has logged in.");
     }
 
+    @Override
     public void logout() {
         System.out.println("Student " + name + " has logged out.");
     }
 
+    @Override
     public void viewForum() {
         System.out.println("View forum as a student.");
     }
