@@ -12,7 +12,7 @@ import java.util.*;
 public interface IManage {
     public void createClass(String kode, String name, String description, Teacher homeroom);
     public void addMateri(String kodeKelas, String materi);
-    public void addQuiz(String quizName, HashMap<String, String> questions);
+    public void addQuiz(String quizName, HashMap<String, String> questions, String kodeKelas);
     public void addAssessment(String assessmentName, HashMap <String, String> questions);
     public void postToForum(String post);
 }

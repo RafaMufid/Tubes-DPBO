@@ -14,16 +14,16 @@ import java.util.*;
  *
  * @author ASUS
  */
-public class Teacher implements IUser, IManage{
-    private String name;
-    private String password;
+public class Teacher extends User implements IUser, IManage{
     private Course Course;
     private Materi materi;
+    private Quiz quiz;
     private static HashMap<String, Teacher> map = new HashMap<>();
 
     public Teacher(String name, String password) {
-        this.name = name;
-        this.password = password;
+        super(name,password);
+        this.Course = new Course();
+        this.materi = new Materi();
     }
     
     // Method to initialize sample data
@@ -108,15 +108,24 @@ public class Teacher implements IUser, IManage{
             System.out.println("Course with code " + kodeKelas + " not found.");
         }
     }
-
+    
+    
     @Override
-    public void addQuiz(String quizName, HashMap<String, String> questions) {
-        System.out.println("Quiz added: " + quizName);
+    public void addQuiz(String quizName, HashMap<String, String> questions, String kodeKelas) {
+        Course course = Course.getCourse().get(kodeKelas);
+        if(course != null){
+           Quiz q = new Quiz(quizName,course.getDescription(),Course.getHomeroom());
+           course.setQuiz(q);
+           q.addQuiz(quizName, questions);
+           
+        }
+        
     }
 
     @Override
     public void addAssessment(String assessmentName, HashMap<String, String> questions) {
         System.out.println("Assessment added: " + assessmentName);
+        
     }
 
     @Override
@@ -132,11 +141,14 @@ public class Teacher implements IUser, IManage{
         Course.gradeAssessment(this, assessmentName);
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
+
 }

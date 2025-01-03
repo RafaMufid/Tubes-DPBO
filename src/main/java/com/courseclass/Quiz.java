@@ -24,6 +24,10 @@ public class Quiz extends Course{
         quizzes.put(quizName, questions);
         quizSubmissions.put(quizName, new HashMap<>());
         System.out.println("Quiz '"+quizName+"' ditambahkan pada kelas " + super.getName());
+        
+        for (Map.Entry<String, HashMap<String, String>> entry : quizzes.entrySet()) {
+        System.out.println("Soal: " + entry.getValue());
+}
     }
 
     public void submitQuiz(Student student, String quizName, HashMap<String, String> answers) {

@@ -11,21 +11,20 @@ import java.util.*;
  *
  * @author ASUS
  */
-public class Student implements IUser{
-    private String name;
-    private String password;
+public class Student extends User implements IUser{
+    private int NIM;
     private ArrayList<Course> enrolledClasses = new ArrayList<>();
     private static HashMap<String, Student> map = new HashMap<>(); // Shared student registry
 
     // Constructor
-    public Student(String name, String password) {
-        this.name = name;
-        this.password = password;
+    public Student(String name, String password, int NIM) {
+        super(name,password);
+        this.NIM = NIM;
     }
 
     // Method to initialize sample data
     public static void init_Student() {
-        map.put("adrianp@gmail.com", new Student("Adrian", "123"));
+        map.put("adrianp@gmail.com", new Student("Adrian", "123", 1234));
     }
 
     // Check if email exists in the map
@@ -42,13 +41,13 @@ public class Student implements IUser{
     }
 
     // Register a new student
-    public static boolean register(String email, String name, String password) {
+    public static boolean register(String email, String name, String password, int NIM) {
         if (map.containsKey(email)) {
             System.out.println("Registration Error: Email already exists.");
             return false;
         }
 
-        Student newStudent = new Student(name, password);
+        Student newStudent = new Student(name, password, NIM);
         map.put(email, newStudent);
         System.out.println("Registration successful for " + name);
         return true;

@@ -17,6 +17,7 @@ public class Course{
     private String description;
     protected static Teacher homeroom;
     private Materi materi;
+    private Quiz quiz;
     protected ArrayList<Student> students = new ArrayList<>();
     private static HashMap<String,Course> course = new HashMap<String,Course>();
     private static ArrayList<Course> arrCourse = new ArrayList<>();
@@ -40,6 +41,13 @@ public class Course{
     public Materi getMateri() {
         return materi;
     }
+    
+    public void setQuiz(Quiz quiz){
+        this.quiz = quiz;
+    }
+
+   
+    
     
     public static void init_Course(){
          // Create courses and add them to the map
@@ -71,7 +79,7 @@ public class Course{
             System.out.println(get.getCourse().keySet() + " " + get.name + " " + get.description);
         }
     }
-    
+   
     public HashMap<String, Course> getCourse() {
         return course;
     }
@@ -85,6 +93,7 @@ public class Course{
         }
         return null;
     }
+    
     
     public String getName(){
         return this.name;
